@@ -694,6 +694,9 @@ IHEVCD_ERROR_T ihevcd_check_out_buf_size(codec_t *ps_codec)
         /* In case of shared mode, do not check validity of ps_codec->ps_out_buffer */
         return (IHEVCD_ERROR_T)IHEVCD_SUCCESS;
     }
+    
+    if(ps_codec->i4_disp_strd > (WORD32)wd)
+        wd = ps_codec->i4_disp_strd;
 
     if(ps_codec->e_chroma_fmt == IV_YUV_420P)
         u4_min_num_out_bufs = MIN_OUT_BUFS_420;
